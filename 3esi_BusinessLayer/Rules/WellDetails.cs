@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Esi_BusinessLayer.Rules
 {
-    class WellDetails : WellRecord
+    public class WellDetails : WellRecord
     {
         String WellType { get; set; }
     }

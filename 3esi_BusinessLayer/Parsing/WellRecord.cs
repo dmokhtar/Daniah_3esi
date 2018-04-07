@@ -5,7 +5,7 @@ using Esi_BusinessLayer.Abstraction;
 namespace Esi_BusinessLayer
 {
     [DelimitedRecord(",")]
-    class WellRecord : IRecord
+    public class WellRecord : IRecord
     {
         public String RecordType { get; set; }
 

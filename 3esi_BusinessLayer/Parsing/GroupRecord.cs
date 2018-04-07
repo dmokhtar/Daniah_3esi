@@ -8,7 +8,7 @@ using Esi_BusinessLayer.Abstraction;
 namespace Esi_BusinessLayer
 {
     [DelimitedRecord(",")]
-    class GroupRecord : IRecord
+    public class GroupRecord : IRecord
     {
         public String RecordType { get; set; }
 
@@ -18,6 +18,6 @@ namespace Esi_BusinessLayer
 
         public int LocationY { get; set; }
 
-        public int Radius { get; set; }
+        public double Radius { get; set; }
     }
 }

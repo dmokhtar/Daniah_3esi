@@ -6,10 +6,17 @@ using System.Threading.Tasks;
 
 namespace Esi_BusinessLayer.Rules
 {
-    class GroupDetails : GroupRecord
+    public class GroupDetails : GroupRecord
     {
-        List<WellDetails> WellDetailsList { get; set; }
+        public List<WellDetails> WellDetailsList { get; set; }
 
         double Area { get; set; }
+
+        public double CalculateArea()
+        {
+            double radius = Radius;
+            double pi = Math.PI;
+            return Area = pi * (radius * radius);
+        }
     }
 }
