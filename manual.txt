@@ -1,0 +1,3 @@
+using FileHelpers Library to read a csv file. Install it through nuget package manager. https://www.filehelpers.net/download/
+
+use the provided csv titles to create the record modeling classes
