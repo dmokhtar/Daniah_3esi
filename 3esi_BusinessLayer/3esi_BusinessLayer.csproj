@@ -44,11 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstraction\IRecord.cs" />
-    <Compile Include="GroupRecord.cs" />
-    <Compile Include="CSVParser.cs" />
-    <Compile Include="EntityRecord.cs" />
+    <Compile Include="Parsing\GroupRecord.cs" />
+    <Compile Include="Parsing\CSVParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WellRecord.cs" />
+    <Compile Include="Parsing\WellRecord.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Rules\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

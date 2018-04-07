@@ -8,5 +8,6 @@ namespace Esi_BusinessLayer.Abstraction
 {
     public interface IRecord
     {
+        string Name { get; set; }
     }
 }

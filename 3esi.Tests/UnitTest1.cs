@@ -16,7 +16,7 @@ namespace _3esi.Tests
             #endregion
 
             #region Apply
-            csvParser.ReadWellGroupCSVFile(filePath);
+            object[] result = csvParser.ReadWellGroupCSVFile(filePath);
             #endregion
 
             #region Assert
