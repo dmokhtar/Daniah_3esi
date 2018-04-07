@@ -1,8 +1,8 @@
 ﻿using System;
-using FileHelpers;
 using Esi_BusinessLayer.Abstraction;
+using FileHelpers;
 
-namespace Esi_BusinessLayer
+namespace Esi_BusinessLayer.Parsing
 {
     [DelimitedRecord(",")]
     public class WellRecord : IRecord

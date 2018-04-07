@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Esi_BusinessLayer;
+using Esi_BusinessLayer.Parsing;
 
 namespace _3esi.Tests
 {
@@ -13,8 +14,8 @@ namespace _3esi.Tests
             try
             {
                 #region Arrange
-                string filePath = @"C:\Users\daniah\Dropbox\interviewAssessments\3esi\3esi.csv";
-                Esi_BusinessLayer.CSVParser csvParser = new CSVParser();
+                string filePath = @"..\..\..\..\Daniah_3esi\3esi.csv";
+                CSVParser csvParser = new CSVParser();
                 #endregion
 
                 #region Apply

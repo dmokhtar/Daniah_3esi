@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using FileHelpers;
 using Esi_BusinessLayer.Abstraction;
+using FileHelpers;
 
-namespace Esi_BusinessLayer
+namespace Esi_BusinessLayer.Parsing
 {
     [DelimitedRecord(",")]
     public class GroupRecord : IRecord
