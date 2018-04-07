@@ -56,10 +56,6 @@
       <Project>{697b57da-ed33-4dcc-b730-ef19aacbde0d}</Project>
       <Name>3esi_BusinessLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\3esi_Website\3esi_Website.csproj">
-      <Project>{97CBD202-C6FE-4015-90AB-7CF54E62579E}</Project>
-      <Name>3esi_Website</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
