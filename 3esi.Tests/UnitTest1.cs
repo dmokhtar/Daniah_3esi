@@ -10,18 +10,28 @@ namespace _3esi.Tests
         [TestMethod]
         public void ReadCSVFile_TestMethod()
         {
-            #region Arrange
-            string filePath = @"C:\Users\daniah\Dropbox\interviewAssessments\3esi\3esi.csv";
-            Esi_BusinessLayer.CSVParser csvParser = new CSVParser();
-            #endregion
+            try
+            {
+                #region Arrange
+                string filePath = @"C:\Users\daniah\Dropbox\interviewAssessments\3esi\3esi.csv";
+                Esi_BusinessLayer.CSVParser csvParser = new CSVParser();
+                #endregion
 
-            #region Apply
-            object[] result = csvParser.ReadWellGroupCSVFile(filePath);
-            #endregion
+                #region Apply
+                object[] result = csvParser.ReadWellGroupCSVFile(filePath);
+                #endregion
 
-            #region Assert
-            Assert.IsNotNull(result);
-            #endregion
+                #region Assert
+                Assert.IsNotNull(result);
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+            finally
+            {
+            }
         }
     }
 }

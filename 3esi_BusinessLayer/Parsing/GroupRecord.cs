@@ -10,14 +10,14 @@ namespace Esi_BusinessLayer
     [DelimitedRecord(",")]
     class GroupRecord : IRecord
     {
-        public String RecordType;
+        public String RecordType { get; set; }
 
         public string Name { get; set; }
 
-        public int LocationX;
+        public int LocationX { get; set; }
 
-        public int LocationY;
+        public int LocationY { get; set; }
 
-        public int Radius;       
+        public int Radius { get; set; }
     }
 }
