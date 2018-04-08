@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3esi.Tests", "3esi.Tests\3e
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3esi_BusinessLayer", "3esi_BusinessLayer\3esi_BusinessLayer.csproj", "{697B57DA-ED33-4DCC-B730-EF19AACBDE0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3esi_Website", "3esi_Website\3esi_Website.csproj", "{97CBD202-C6FE-4015-90AB-7CF54E62579E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3esi_ConsoleApp", "3esi_ConsoleApp\3esi_ConsoleApp.csproj", "{9965C73D-BF1A-4E08-A1CD-17ADA60686E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{697B57DA-ED33-4DCC-B730-EF19AACBDE0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{697B57DA-ED33-4DCC-B730-EF19AACBDE0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{697B57DA-ED33-4DCC-B730-EF19AACBDE0D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{97CBD202-C6FE-4015-90AB-7CF54E62579E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{97CBD202-C6FE-4015-90AB-7CF54E62579E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{97CBD202-C6FE-4015-90AB-7CF54E62579E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{97CBD202-C6FE-4015-90AB-7CF54E62579E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9965C73D-BF1A-4E08-A1CD-17ADA60686E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9965C73D-BF1A-4E08-A1CD-17ADA60686E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9965C73D-BF1A-4E08-A1CD-17ADA60686E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9965C73D-BF1A-4E08-A1CD-17ADA60686E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

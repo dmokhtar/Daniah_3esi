@@ -6,6 +6,8 @@ using System;
 using Esi_BusinessLayer.Common;
 using System.Collections.Generic;
 using Esi_BusinessLayer.Abstraction;
+using Esi_BusinessLayer.Parsing;
+using System.Linq;
 
 namespace _3esi.Tests.Rules
 {
@@ -13,7 +15,7 @@ namespace _3esi.Tests.Rules
     public class ValidateRecordTest : AbstractValidateTest
     {
         private ValidateRecord validateRecord;
-        private const int ActualRecordCount = 1;
+        private const int ActualRecordCount = 2;
 
         [TestInitialize]
         public void Setup()
@@ -47,17 +49,54 @@ namespace _3esi.Tests.Rules
         }
 
         [TestMethod]
-        public void AreGroupsIntersecting_RemoveGroupsIntersections()
+        public void ValidateGroupLocationUniqness_RemovesDuplicatesFromRecordsList()
         {
             try
             {
                 #region Arrange
-                int expected = 5;
+                List<GroupRecord> groupsList = new List<GroupRecord>{
+                    new GroupRecord{
+                        LocationX = 6,
+                        LocationY = 6,
+                        Radius = 5
+                    },
+                    new GroupRecord{
+                        LocationX = 6,
+                        LocationY = 6,
+                        Radius = 5
+                    }
+                };
+                #endregion
+
+                #region Act
+                groupsList = validateRecord.ValidateGroupLocationUniqness(groupsList);
+                #endregion
+
+                #region Assert
+                Assert.IsTrue(groupsList.Count() == 1);
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+            finally
+            {
+            }
+        }
+
+        [TestMethod]
+        public void RemoveGroupsIntersections_ReturnUpdatedList()
+        {
+            try
+            {
+                #region Arrange
+                int expected = 3;
                 int actual = 0;
                 #endregion
 
                 #region Act
-                List<IRecord> records = validateRecord.AreGroupsIntersecting(IntersectingGroupsList);
+                List<GroupRecord> records = validateRecord.RemoveGroupsIntersections(IntersectingGroupsList);
                 #endregion
 
                 #region Assert
@@ -84,11 +123,11 @@ namespace _3esi.Tests.Rules
                 double expected = 3;
                 double actual = 0;
 
-                GroupDetails group = new GroupDetails();
+                GroupRecord group = new GroupRecord();
                 group.LocationX = 6;
                 group.LocationY = 6;
 
-                WellDetails well = new WellDetails();
+                WellRecord well = new WellRecord();
                 well.TopX = 5;
                 well.TopY = 3;
 
@@ -112,7 +151,7 @@ namespace _3esi.Tests.Rules
             }
         }
         [TestMethod]
-        public void IsGroupChild_True()
+        public void SetGroupsChildren_UpdateList()
         {
             try
             {
@@ -120,23 +159,28 @@ namespace _3esi.Tests.Rules
                 bool expected = true;
                 bool actual = false;
 
-                GroupDetails group = new GroupDetails();
-                group.LocationX = 6;
-                group.LocationY = 6;
-                group.Radius = 5;
-
-                WellDetails well = new WellDetails();
-                well.TopX = 5;
-                well.TopY = 3;
+                List<GroupRecord> groupsList = new List<GroupRecord>{
+                    new GroupRecord{
+                        LocationX = 6,
+                        LocationY = 6,
+                        Radius = 5
+                    }
+                };
+                List<WellRecord> wellsList = new List<WellRecord>{
+                    new WellRecord{
+                        TopX = 5,
+                        TopY = 3
+                    }
+                };
                 #endregion
 
                 #region Act
-                validateRecord.IsGroupChild(group, well);
+                Dictionary<IRecord, List<WellRecord>> groupsDictionary = validateRecord.SetGroupsChildren(groupsList, wellsList);
                 #endregion
 
                 #region Assert
-                actual = group.WellDetailsList.Count > 0;
-                Assert.AreEqual(expected, actual);
+                Assert.IsNotNull(groupsDictionary);
+                Assert.IsFalse(groupsDictionary.FirstOrDefault().Value.IsNullOrEmpty());
                 #endregion
 
             }
@@ -147,7 +191,7 @@ namespace _3esi.Tests.Rules
             finally
             {
             }
-        }       
+        }
 
         [TestMethod]
         public void SetWellType_Vertical()
@@ -158,19 +202,21 @@ namespace _3esi.Tests.Rules
                 String expected = Esi_BusinessLayer.Common.WellType.Vertical.ToDescription();
                 String actual = String.Empty;
 
-                WellDetails well = new WellDetails();
-                well.TopX = 5;
-                well.TopY = 3;
-                well.BottomX = 5;
-                well.BottomY = 3;
+                List<WellRecord> wellsList = new List<WellRecord> {
+                    new WellRecord{
+               TopX = 5,
+               TopY = 3,
+               BottomX = 5,
+               BottomY = 3
+            }};
                 #endregion
 
                 #region Act
-                validateRecord.SetWellType(well);
+                validateRecord.SetWellType(wellsList);
                 #endregion
 
                 #region Assert
-                actual = well.WellType;
+                actual = wellsList.FirstOrDefault().WellType;
                 Assert.AreEqual(expected, actual);
                 #endregion
 
@@ -193,19 +239,21 @@ namespace _3esi.Tests.Rules
                 String expected = Esi_BusinessLayer.Common.WellType.Slanted.ToDescription();
                 String actual = String.Empty;
 
-                WellDetails well = new WellDetails();
-                well.TopX = 8;
-                well.TopY = 9;
-                well.BottomX = 9;
-                well.BottomY = 10;
+                List<WellRecord> wellsList = new List<WellRecord> {
+                    new WellRecord{
+               TopX = 8,
+               TopY = 9,
+               BottomX = 9,
+               BottomY = 10
+            }};
                 #endregion
 
                 #region Act
-                validateRecord.SetWellType(well);
+                validateRecord.SetWellType(wellsList);
                 #endregion
 
                 #region Assert
-                actual = well.WellType;
+                actual = wellsList.FirstOrDefault().WellType;
                 Assert.AreEqual(expected, actual);
                 #endregion
 
@@ -228,19 +276,21 @@ namespace _3esi.Tests.Rules
                 String expected = Esi_BusinessLayer.Common.WellType.Horizontal.ToDescription();
                 String actual = String.Empty;
 
-                WellDetails well = new WellDetails();
-                well.TopX = 12;
-                well.TopY = 4;
-                well.BottomX = 18;
-                well.BottomY = 2;
+                List<WellRecord> wellsList = new List<WellRecord> {
+                    new WellRecord{
+               TopX = 12,
+               TopY = 4,
+               BottomX = 18,
+               BottomY = 2
+            }};
                 #endregion
 
                 #region Act
-                validateRecord.SetWellType(well);
+                validateRecord.SetWellType(wellsList);
                 #endregion
 
                 #region Assert
-                actual = well.WellType;
+                actual = wellsList.FirstOrDefault().WellType;
                 Assert.AreEqual(expected, actual);
                 #endregion
 

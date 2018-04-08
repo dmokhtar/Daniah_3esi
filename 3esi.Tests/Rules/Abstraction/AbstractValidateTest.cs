@@ -44,26 +44,8 @@ namespace _3esi.Tests.Rules.Abstraction
             }
         };
 
-        protected List<IRecord> IntersectingGroupsList => new List<IRecord>
-        {
-            new WellRecord
-            {
-                Name = "Well A",
-                BottomX = 10,
-                BottomY = 20,
-                RecordType = "Well",
-                TopX = 10,
-                TopY = 10
-            },
-            new WellRecord
-            {
-                Name = "Well B",
-                BottomX = 10,
-                BottomY = 20,
-                RecordType = "Well",
-                TopX = 10,
-                TopY = 10
-            },
+        protected List<GroupRecord> IntersectingGroupsList => new List<GroupRecord>
+        {   
             new GroupRecord
             {
                 Name = "Group A",

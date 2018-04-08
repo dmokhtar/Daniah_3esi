@@ -19,5 +19,8 @@ namespace Esi_BusinessLayer.Parsing
 
         public int BottomY { get; set; }
 
+        [FieldHidden]
+        public String WellType { get; set; }
+
     }
 }

@@ -54,7 +54,7 @@
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Rules\Abstraction\AbstractValidateTest.cs" />
     <Compile Include="Rules\ValidateRecordTest.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="CSVParserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

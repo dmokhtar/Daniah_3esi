@@ -38,23 +38,8 @@ namespace Esi_BusinessLayer.Parsing
                 case "Group":
                     return typeof(GroupRecord);
                 default:
-                    return null;
+                    throw new Exception();
             }
-        }
-
-        public void LoadErrors()
-        {
-            // sometime later you can read it back using:
-            ErrorInfo[] errors = ErrorManager.LoadErrors("errors.out");
-
-            // This will display error from line 2 of the file.
-            foreach (var err in errors)
-            {
-                Console.WriteLine();
-                Console.WriteLine("Error on Line number: {0}", err.LineNumber);
-                Console.WriteLine("Record causing the problem: {0}", err.RecordString);
-                Console.WriteLine("Complete exception information: {0}", err.ExceptionInfo.ToString());
-            }
-        }
+        }        
     }
 }
