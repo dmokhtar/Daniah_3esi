@@ -9,6 +9,6 @@ namespace Esi_BusinessLayer.Rules
 {
     public class WellDetails : WellRecord
     {
-        String WellType { get; set; }
+        public String WellType { get; set; }
     }
 }

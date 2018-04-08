@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstraction\IRecord.cs" />
+    <Compile Include="Common\EnumerationExtensions.cs" />
+    <Compile Include="Common\WellType.cs" />
     <Compile Include="Parsing\GroupRecord.cs" />
     <Compile Include="Parsing\CSVParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

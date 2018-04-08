@@ -43,5 +43,59 @@ namespace _3esi.Tests.Rules.Abstraction
                 Radius = 10
             }
         };
+
+        protected List<IRecord> IntersectingGroupsList => new List<IRecord>
+        {
+            new WellRecord
+            {
+                Name = "Well A",
+                BottomX = 10,
+                BottomY = 20,
+                RecordType = "Well",
+                TopX = 10,
+                TopY = 10
+            },
+            new WellRecord
+            {
+                Name = "Well B",
+                BottomX = 10,
+                BottomY = 20,
+                RecordType = "Well",
+                TopX = 10,
+                TopY = 10
+            },
+            new GroupRecord
+            {
+                Name = "Group A",
+                LocationX = 1,
+                LocationY= 5,
+                RecordType = "Group",
+                Radius = 5
+            },
+            new GroupRecord
+            {
+                Name = "Group B",
+                LocationX = 1,
+                LocationY= 16,
+                RecordType = "Group",
+                Radius = 2
+            },
+            new GroupRecord
+            {
+                Name = "Group C",
+                LocationX = 10,
+                LocationY= 20,
+                RecordType = "Group",
+                Radius = 5
+            },
+            new GroupRecord
+            {
+                Name = "Group D",
+                LocationX = 10,
+                LocationY= 20,
+                RecordType = "Group",
+                Radius = 10
+            }
+        };
     }
 }

@@ -9,6 +9,10 @@ namespace Esi_BusinessLayer.Rules
 {
     public class GroupDetails : GroupRecord
     {
+        public GroupDetails()
+        {
+            WellDetailsList = new List<WellDetails>();
+        }
         public List<WellDetails> WellDetailsList { get; set; }
 
         double Area { get; set; }
