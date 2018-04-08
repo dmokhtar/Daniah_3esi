@@ -30,13 +30,13 @@ namespace Esi_BusinessLayer.Rules
             validateRecord.GetGroupsWellsLists(validateRecord.Records, groupsList, wellsList);
 
             //Remove groups with duplicate locations
-            groupsList = validateRecord.ValidateGroupLocationUniqness(groupsList);
+            validateRecord.ValidateGroupLocationUniqness(groupsList);
 
             //Remove groups intersecting
             groupsList = validateRecord.RemoveGroupsIntersections(groupsList);
 
             //Remove wells with duplicate locations
-            wellsList = validateRecord.ValidateWellLocationUniqness(wellsList);
+            validateRecord.ValidateWellLocationUniqness(wellsList);
             
             //Set well types
             validateRecord.SetWellType(wellsList);

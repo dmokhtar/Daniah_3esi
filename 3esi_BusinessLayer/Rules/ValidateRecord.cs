@@ -28,18 +28,18 @@ namespace Esi_BusinessLayer.Rules
             Records = Records.Except(FailedRecords).ToList();
         }
 
-        public List<GroupRecord>  ValidateGroupLocationUniqness(List<GroupRecord> groupRecords)
+        public void ValidateGroupLocationUniqness(List<GroupRecord> groupRecords)
         {
             List<GroupRecord> failedGroupRecords = groupRecords.Distinct(new GroupLocationComparator()).ToList();
             FailedRecords.AddRange(failedGroupRecords);
-            return groupRecords.Except(failedGroupRecords).ToList();
+            groupRecords.RemoveAll(record => failedGroupRecords.Contains(record));
         }
 
-        public List<WellRecord> ValidateWellLocationUniqness(List<WellRecord> wellRecords)
+        public void ValidateWellLocationUniqness(List<WellRecord> wellRecords)
         {
             List<WellRecord> failedWellRecords = wellRecords.Distinct(new WellLocationComparator()).ToList();
             FailedRecords.AddRange(failedWellRecords);
-            return wellRecords.Except(failedWellRecords).ToList();
+            wellRecords.RemoveAll(record => failedWellRecords.Contains(record));
         }
 
 

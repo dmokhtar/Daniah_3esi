@@ -69,7 +69,7 @@ namespace _3esi.Tests.Rules
                 #endregion
 
                 #region Act
-                groupsList = validateRecord.ValidateGroupLocationUniqness(groupsList);
+                validateRecord.ValidateGroupLocationUniqness(groupsList);
                 #endregion
 
                 #region Assert
@@ -107,7 +107,7 @@ namespace _3esi.Tests.Rules
                 #endregion
 
                 #region Act
-                wellsList = validateRecord.ValidateWellLocationUniqness(wellsList);
+                validateRecord.ValidateWellLocationUniqness(wellsList);
                 #endregion
 
                 #region Assert
