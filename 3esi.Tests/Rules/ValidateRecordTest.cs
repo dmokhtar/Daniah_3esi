@@ -1,12 +1,12 @@
 ﻿using _3esi.Tests.Extensions;
 using _3esi.Tests.Rules.Abstraction;
+using Esi_BusinessLayer.Abstraction;
+using Esi_BusinessLayer.Common;
+using Esi_BusinessLayer.Parsing;
 using Esi_BusinessLayer.Rules;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using Esi_BusinessLayer.Common;
 using System.Collections.Generic;
-using Esi_BusinessLayer.Abstraction;
-using Esi_BusinessLayer.Parsing;
 using System.Linq;
 
 namespace _3esi.Tests.Rules
@@ -73,7 +73,45 @@ namespace _3esi.Tests.Rules
                 #endregion
 
                 #region Assert
-                Assert.IsTrue(groupsList.Count() == 1);
+                Assert.IsTrue(groupsList.Count == 1);
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+            finally
+            {
+            }
+        }
+
+        [TestMethod]
+        public void ValidateWellLocationUniqness_RemovesDuplicatesFromRecordsList()
+        {
+            try
+            {
+                #region Arrange
+                List<WellRecord> wellsList = new List<WellRecord>{
+                    new WellRecord{
+                        Name = "SomeName",
+                        BottomX= 6,
+                        BottomY = 6,
+                        TopX= 5
+                    },
+                    new WellRecord{
+                        BottomX= 6,
+                        BottomY = 6,
+                        TopX= 5
+                    }
+                };
+                #endregion
+
+                #region Act
+                wellsList = validateRecord.ValidateWellLocationUniqness(wellsList);
+                #endregion
+
+                #region Assert
+                Assert.IsTrue(wellsList.Count == 1);
                 #endregion
             }
             catch (Exception ex)
