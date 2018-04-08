@@ -38,7 +38,7 @@ namespace Esi_BusinessLayer.Parsing
                 case "Group":
                     return typeof(GroupRecord);
                 default:
-                    throw new Exception();
+                    throw new FileHelpersException("Unknown Record Type");
             }
         }        
     }

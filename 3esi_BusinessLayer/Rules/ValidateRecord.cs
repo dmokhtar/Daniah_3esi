@@ -11,34 +11,34 @@ namespace Esi_BusinessLayer.Rules
 {
     public class ValidateRecord : IValidateRecord
     {
-        public List<IRecord> failedRecords { get; set; }
+        public List<IRecord> FailedRecords { get; set; }
         private Dictionary<IRecord, List<WellRecord>> groupsDictionary;
 
         public List<IRecord> Records { get; set; }
 
         public ValidateRecord()
         {
-            failedRecords = new List<IRecord>();
+            FailedRecords = new List<IRecord>();
             groupsDictionary = new Dictionary<IRecord, List<WellRecord>>();
         }
 
         public void ValidateNameUniqness()
         {
-            failedRecords = Records.GroupBy(record => record.Name).Select(item => item.First()).ToList();
-            Records = Records.Except(failedRecords).ToList();
+            FailedRecords = Records.GroupBy(record => record.Name).Select(item => item.First()).ToList();
+            Records = Records.Except(FailedRecords).ToList();
         }
 
         public List<GroupRecord>  ValidateGroupLocationUniqness(List<GroupRecord> groupRecords)
         {
             List<GroupRecord> failedGroupRecords = groupRecords.Distinct(new GroupLocationComparator()).ToList();
-            failedRecords.AddRange(failedGroupRecords);
+            FailedRecords.AddRange(failedGroupRecords);
             return groupRecords.Except(failedGroupRecords).ToList();
         }
 
         public List<WellRecord> ValidateWellLocationUniqness(List<WellRecord> wellRecords)
         {
             List<WellRecord> failedWellRecords = wellRecords.Distinct(new WellLocationComparator()).ToList();
-            failedRecords.AddRange(failedWellRecords);
+            FailedRecords.AddRange(failedWellRecords);
             return wellRecords.Except(failedWellRecords).ToList();
         }
 
@@ -149,7 +149,7 @@ namespace Esi_BusinessLayer.Rules
                 }                
             }
 
-            failedRecords.AddRange(intersectingFailedRecords);
+            FailedRecords.AddRange(intersectingFailedRecords);
             List<GroupRecord> groups = intersectingFailedRecords.Cast<GroupRecord>().ToList();
             return groupDetailsList.Except(groups).ToList();
         }
