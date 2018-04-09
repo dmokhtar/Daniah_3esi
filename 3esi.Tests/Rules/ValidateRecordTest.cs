@@ -64,16 +64,22 @@ namespace _3esi.Tests.Rules
                         LocationX = 6,
                         LocationY = 6,
                         Radius = 5
+                    },
+                    new GroupRecord{
+                        LocationX = 11,
+                        LocationY = 10,
+                        Radius = 1
                     }
                 };
+                validateRecord.GroupsList = groupsList;
                 #endregion
 
                 #region Act
-                validateRecord.ValidateGroupLocationUniqness(groupsList);
+                validateRecord.ValidateGroupLocationUniqness();
                 #endregion
 
                 #region Assert
-                Assert.IsTrue(groupsList.Count == 1);
+                Assert.IsTrue(validateRecord.GroupsList.Count == 2);
                 #endregion
             }
             catch (Exception ex)
@@ -104,14 +110,15 @@ namespace _3esi.Tests.Rules
                         TopX= 5
                     }
                 };
+                validateRecord.WellsList = wellsList;
                 #endregion
 
                 #region Act
-                validateRecord.ValidateWellLocationUniqness(wellsList);
+                validateRecord.ValidateWellLocationUniqness();
                 #endregion
 
                 #region Assert
-                Assert.IsTrue(wellsList.Count == 1);
+                Assert.IsTrue(validateRecord.WellsList.Count == 1);
                 #endregion
             }
             catch (Exception ex)
@@ -131,14 +138,16 @@ namespace _3esi.Tests.Rules
                 #region Arrange
                 int expected = 3;
                 int actual = 0;
+
+                validateRecord.GroupsList = IntersectingGroupsList;
                 #endregion
 
                 #region Act
-                List<GroupRecord> records = validateRecord.RemoveGroupsIntersections(IntersectingGroupsList);
+                validateRecord.RemoveGroupsIntersections();
                 #endregion
 
                 #region Assert
-                actual = records.Count;
+                actual = validateRecord.GroupsList.Count;
                 Assert.AreEqual(expected, actual);
                 #endregion
 
@@ -210,10 +219,13 @@ namespace _3esi.Tests.Rules
                         TopY = 3
                     }
                 };
+
+                validateRecord.WellsList = wellsList;
+                validateRecord.GroupsList = groupsList;
                 #endregion
 
                 #region Act
-                Dictionary<IRecord, List<WellRecord>> groupsDictionary = validateRecord.SetGroupsChildren(groupsList, wellsList);
+                Dictionary<IRecord, List<WellRecord>> groupsDictionary = validateRecord.SetGroupsChildren();
                 #endregion
 
                 #region Assert
@@ -247,10 +259,12 @@ namespace _3esi.Tests.Rules
                BottomX = 5,
                BottomY = 3
             }};
+
+                validateRecord.WellsList = wellsList;
                 #endregion
 
                 #region Act
-                validateRecord.SetWellType(wellsList);
+                validateRecord.SetWellType();
                 #endregion
 
                 #region Assert
@@ -284,10 +298,12 @@ namespace _3esi.Tests.Rules
                BottomX = 9,
                BottomY = 10
             }};
+
+                validateRecord.WellsList = wellsList;
                 #endregion
 
                 #region Act
-                validateRecord.SetWellType(wellsList);
+                validateRecord.SetWellType();
                 #endregion
 
                 #region Assert
@@ -321,10 +337,12 @@ namespace _3esi.Tests.Rules
                BottomX = 18,
                BottomY = 2
             }};
+
+                validateRecord.WellsList = wellsList;
                 #endregion
 
                 #region Act
-                validateRecord.SetWellType(wellsList);
+                validateRecord.SetWellType();
                 #endregion
 
                 #region Assert

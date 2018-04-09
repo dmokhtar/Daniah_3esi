@@ -33,6 +33,9 @@
     <Reference Include="FileHelpers, Version=3.2.7.0, Culture=neutral, PublicKeyToken=3e0c08d59cc3d657, processorArchitecture=MSIL">
       <HintPath>..\packages\FileHelpers.3.2.7\lib\net45\FileHelpers.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,6 +50,7 @@
     <Compile Include="Common\GroupLocationComparator.cs" />
     <Compile Include="Common\WellLocationComparator.cs" />
     <Compile Include="Common\WellType.cs" />
+    <Compile Include="Log\Logger.cs" />
     <Compile Include="Parsing\GroupRecord.cs" />
     <Compile Include="Parsing\CSVParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -13,9 +13,8 @@ namespace _3esi_ConsoleApp
             udClass.Execute(FileUpload);
 
             //display successfull and failed lists
-            udClass.LoadDisplayErrors();
-            //DisplayGroupsAndChildrenWells(groupsDictionary);
-            //DisplayStandAloneWells(wellsList);
+            udClass.DisplayGroupsAndWells();
+            udClass.DisplayErrors();
 
             Console.ReadLine();
         }
