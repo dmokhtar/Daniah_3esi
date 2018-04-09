@@ -50,7 +50,6 @@
     <Compile Include="Common\GroupLocationComparator.cs" />
     <Compile Include="Common\WellLocationComparator.cs" />
     <Compile Include="Common\WellType.cs" />
-    <Compile Include="Log\Logger.cs" />
     <Compile Include="Parsing\GroupRecord.cs" />
     <Compile Include="Parsing\CSVParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
